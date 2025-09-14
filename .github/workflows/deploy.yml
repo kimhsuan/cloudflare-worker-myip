@@ -12,6 +12,8 @@ jobs:
     uses: ./.github/workflows/reusable-cloudflare-deploy.yml
     with:
       environment: dev
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
   deploy-prod:
     if: github.ref_name == 'main'
@@ -19,3 +21,5 @@ jobs:
     uses: ./.github/workflows/reusable-cloudflare-deploy.yml
     with:
       environment: prod
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

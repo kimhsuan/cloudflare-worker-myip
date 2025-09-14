@@ -1,0 +1,35 @@
+name: Reusable Deploy Cloudflare Worker
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        # The Wrangler environment name (matches environments in wrangler.toml)
+        description: Target Wrangler environment (dev or prod)
+        required: true
+        type: string
+      wranglerVersion:
+        # Optional: pin a specific wrangler version for reproducible deploys
+        description: Wrangler version to use
+        required: false
+        default: '4.36.0'
+        type: string
+
+jobs:
+  deploy:
+    name: Deploy to ${{ inputs.environment }} environment
+    runs-on: ubuntu-22.04
+    # This ties the job to an environment in GitHub (useful for protection rules)
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+        # Check out repository so Wrangler can read source files and wrangler.toml
+      - uses: cloudflare/wrangler-action@v3
+        name: Deploy (${{ inputs.environment }})
+        with:
+          # Cloudflare API token used by wrangler to publish the worker
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # Allow callers to control wrangler version for stability or fixes
+          wranglerVersion: ${{ inputs.wranglerVersion }}
+          # Deploy into the specified wrangler environment (dev/prod)
+          environment: ${{ inputs.environment }}

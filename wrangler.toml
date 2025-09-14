@@ -1,0 +1,18 @@
+main = "src/worker.ts"
+compatibility_date = "2025-08-15"
+send_metrics = true
+workers_dev = true
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[env.prod]
+name = "myip-prod"
+
+[[env.prod.routes]]
+pattern = "myip.lai.kim"
+custom_domain = true
+
+[env.dev]
+name = "myip-dev"

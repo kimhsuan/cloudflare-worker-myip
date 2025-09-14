@@ -1,0 +1,28 @@
+{
+  "name": "cloudflare-worker-myip",
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "private": true,
+  "scripts": {
+    "start": "npx wrangler dev --env dev",
+    "deploy-dev": "npx wrangler deploy --env dev",
+    "lint": "eslint .",
+    "compile": "tsc",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250413.0",
+    "@types/node": "20.8.2",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "typescript": "~5.2.0",
+    "wrangler": "~4.36.0"
+  }
+}

@@ -1,0 +1,21 @@
+name: Deploy Cloudflare Worker
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-dev:
+    if: github.ref_name == 'main'
+    uses: ./.github/workflows/reusable-cloudflare-deploy.yml
+    with:
+      environment: dev
+
+  deploy-prod:
+    if: github.ref_name == 'main'
+    needs: deploy-dev
+    uses: ./.github/workflows/reusable-cloudflare-deploy.yml
+    with:
+      environment: prod

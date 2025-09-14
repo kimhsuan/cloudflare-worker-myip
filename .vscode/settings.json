@@ -1,0 +1,19 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "files.insertFinalNewline": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "# Use Conventional Commits 1.0.0 for commit messages."
+    },
+    {
+      "text": "Commit messages must be in English using Conventional Commits."
+    },
+    {
+      "file": ".github/copilot-commit-message-instructions.md"
+    }
+  ]
+}

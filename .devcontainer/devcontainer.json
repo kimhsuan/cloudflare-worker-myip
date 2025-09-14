@@ -27,8 +27,10 @@
 				// prettier-ignore
 				"davidanson.vscode-markdownlint",
 				"esbenp.prettier-vscode",
-				"google.geminicodeassist",
-				"postman.postman-for-vscode"
+				"mhutchie.git-graph",
+				"postman.postman-for-vscode",
+				"github.copilot",
+				"github.vscode-github-actions"
 			]
 		}
 	}
